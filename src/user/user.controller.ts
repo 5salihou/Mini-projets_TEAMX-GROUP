@@ -6,19 +6,17 @@ import {
   Param,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 import { User } from './entity/user.entity';
-import { PaginatedUserDto } from './dto/paginated-user.dto';
 import { AddUserDto } from './dto/add-user.dto';
 import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private readonly userService: UserService) {}
   // afficher tous les utilisateurs
   @Get()
-  getUsers(@Query() mesQueryParams: PaginatedUserDto): User[] {
+  getUsers(): User[] {
     return this.userService.getUsers();
   }
   // afficher un utilisateurs
@@ -28,7 +26,7 @@ export class UserController {
   }
   // ajouter un utilisateurs
   @Post()
-  addUser(@Body() newUser: AddUserDto): User {
+  addUser(@Body() newUser: AddUserDto) {
     return this.userService.addUser(newUser);
   }
   // supprimer un utilisateurs
