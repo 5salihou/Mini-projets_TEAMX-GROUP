@@ -1,8 +1,14 @@
 import { Box, Button, Container, Table, TableContainer, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import {AiOutlinePlus} from "react-icons/ai"
 import Row from "./components/Row";
+import { useContext, useEffect } from "react";
+import { GlobalContexte } from "./contexte/Wrapper";
 
 function App() {
+  const { FetchUsers, users } = useContext(GlobalContexte);
+  useEffect(() => {
+    FetchUsers();
+  }, []);
   return (
     <div className="App">
         <Container maxW={'full'} p="4" fontSize={'18px'}>
@@ -28,13 +34,20 @@ function App() {
                     <Tr>
                       <Th>AVATAR</Th>
                       <Th>NOM</Th>
-                      <Th>PRENOM</Th>
                       <Th>PROFESSION</Th>
                       <Th>ACTIONS</Th>
                     </Tr>
                   </Thead>
                   <Tbody>
-                    <Row />
+                    {users?.map(({ _id, nom, intitule }) => {
+                      return (
+                        <Row
+                          id={_id}
+                          nom={nom}
+                          intitule={intitule}
+                        />
+                      );
+                    })}
                   </Tbody>
                 </Table>
               </TableContainer>
