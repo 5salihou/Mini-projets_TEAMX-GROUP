@@ -39,7 +39,7 @@ export default function Wrapper({ children }) {
     const Add = (form) => {
         axios.post('/api/user', form)
         .then(res=>{
-            setUsers(res.data);
+            setUsers(res.data.users);
         })
         .catch(err=>{
             setErrors(err.response.data.error);
@@ -75,7 +75,7 @@ export default function Wrapper({ children }) {
     const AddProduct = (form) => {
         axios.post('/api/Product', form)
         .then(res=>{
-            setProducts(res.data);
+            setProducts(res.data.products);
             toast({
                 title: 'Product Add',
                 status: 'success',

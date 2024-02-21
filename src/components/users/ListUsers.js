@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box, Button, Container, Table, TableContainer, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react";
 import {AiOutlinePlus} from "react-icons/ai"
-import Row from "../Row";
+import Row from "./Row";
 import { useContext, useEffect } from "react";
 import { GlobalContexte } from "../../contexte/Wrapper";
-import DrawerExample from "../../components/Drawer";
+import DrawerExample from "./Drawer";
 
 function ListUsers() {
   const { FetchUsers, users, onOpen } = useContext(GlobalContexte);

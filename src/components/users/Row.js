@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Td, Tr } from '@chakra-ui/react';
 import { React, useContext } from 'react';
 import { AiFillAccountBook, AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { GlobalContexte } from "../contexte/Wrapper";
+import { GlobalContexte } from "../../contexte/Wrapper";
 
 const Row = ({ id, firstname, lastname, address }) => {
     const { Delete } = useContext(GlobalContexte);

@@ -1,7 +1,7 @@
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay } from "@chakra-ui/react"
 import React, { useContext, useState } from "react"
-import { GlobalContexte } from "../contexte/Wrapper";
-import InputsGroup from "./InputsGroup";
+import { GlobalContexte } from "../../contexte/Wrapper";
+import InputsGroup from "../utils/InputsGroup";
 
 export default function DrawerExample() {
     const { isOpen, onClose, Add, errors } = useContext(GlobalContexte);
