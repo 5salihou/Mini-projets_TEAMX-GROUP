@@ -7,12 +7,12 @@ export type ProductDocument = Product & Document;
 export class Product {
   @Prop({ required: false })
   id: string;
-  @Prop({ required: false })
+  @Prop({ required: true })
   name: string;
-  @Prop({ required: false })
-  price: string;
-  @Prop({ required: false })
-  quantity: string;
+  @Prop({ required: true })
+  price: number;
+  @Prop({ required: true })
+  quantity: number;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
