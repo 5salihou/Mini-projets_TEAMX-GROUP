@@ -1,58 +1,44 @@
-import { Box, Button, Container, Table, TableContainer, Tbody, Text, Th, Thead, Tr } from "@chakra-ui/react";
-import {AiOutlinePlus} from "react-icons/ai"
-import Row from "./components/Row";
-import { useContext, useEffect } from "react";
-import { GlobalContexte } from "./contexte/Wrapper";
+import { Link, RouterProvider, createBrowserRouter } from "react-router-dom";
+import ListUsers from './components/users/ListUsers';
+import ListProducts from './components/products/ListProducts';
+import { Box, Button } from "@chakra-ui/react";
+
+const router = createBrowserRouter ([
+  
+  {
+    path: '/ListUsers',
+    element: <div>
+                  <Box mb={'10px'} p="4" display={'flex'} justifyContent="space-between">
+                    <Link to="/ListUsers">
+                      <Button ml={'100px'} colorScheme='blue'>USERS</Button>
+                    </Link>
+                    <Link to="/ListProducts">
+                      <Button mr={'1000px'} colorScheme='blue'>PRODUCTS</Button>
+                    </Link>
+                  </Box>
+                  <ListUsers />
+             </div>
+  },
+  {
+    path: '/ListProducts',
+    element: <div>
+                  <Box mb={'10px'} p="4" display={'flex'} justifyContent="space-between">
+                    <Link to="/ListUsers">
+                      <Button ml={'100px'} colorScheme='blue'>USERS</Button>
+                    </Link>
+                    <Link to="/ListProducts">
+                      <Button mr={'1000px'} colorScheme='blue'>PRODUCTS</Button>
+                    </Link>
+                  </Box>
+                  <ListProducts/>
+              </div>
+  }
+]);
 
 function App() {
-  const { FetchUsers, users } = useContext(GlobalContexte);
-  useEffect(() => {
-    FetchUsers();
-  }, []);
   return (
     <div className="App">
-        <Container maxW={'full'} p="4" fontSize={'18px'}>
-          <Box mb={'4'} rounded="xl" bg='blue.600' w='100%' p={4} color='white'>
-            This is the Box
-          </Box>
-          <Container mb={'4'} rounded="xl" maxW='2xl' bg='blue.600' centerContent>
-              <Box padding='4' bg='blue.400' color='black' maxW='md'>
-                Cette espace regroupe l'ensemble des utisateurs 
-                de produits electronique et les produits eux meme !
-              </Box>
-            </Container>
-            <Box rounded="lg" boxShadow="base">
-              <Box p="4" display={'flex'} justifyContent="space-between">
-                  <Text fontSize="xl" fontWeight="bold">List User</Text>
-                <Button leftIcon={<AiOutlinePlus fontSize={'20px'} />} colorScheme='teal' variant='outline' maxW="300px" minW="150px">
-                    Add User
-                  </Button>
-              </Box>
-              <TableContainer>
-                <Table variant='simple'>
-                  <Thead>
-                    <Tr>
-                      <Th>AVATAR</Th>
-                      <Th>NOM</Th>
-                      <Th>PROFESSION</Th>
-                      <Th>ACTIONS</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {users?.map(({ _id, nom, intitule }) => {
-                      return (
-                        <Row
-                          id={_id}
-                          nom={nom}
-                          intitule={intitule}
-                        />
-                      );
-                    })}
-                  </Tbody>
-                </Table>
-              </TableContainer>
-            </Box>
-          </Container>
+      <RouterProvider router={router} />
     </div>
   );
 }

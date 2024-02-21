@@ -1,18 +1,18 @@
 import { Avatar, Box, Button, Td, Tr } from '@chakra-ui/react';
 import { React, useContext } from 'react';
 import { AiFillAccountBook, AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { GlobalContexte } from "../contexte/Wrapper";
+import { GlobalContexte } from "../../contexte/Wrapper";
 
-const Row = ({ id, firstname, lastname, address }) => {
-    const { Delete } = useContext(GlobalContexte);
+const RowProduct = ({ id, name, price, quantity }) => {
+    const { DeleteProduct } = useContext(GlobalContexte);
     return (
         <Tr>
             <Td>
-                <Avatar name={firstname}></Avatar>
+                <Avatar name={name}></Avatar>
             </Td>
-            <Td>{firstname}</Td>
-            <Td>{lastname}</Td>
-            <Td>{address}</Td>
+            <Td>{name}</Td>
+            <Td>{price}</Td>
+            <Td>{quantity}</Td>
             <Td >
                 <Box display="flex" gap="1">
                     <Button colorScheme='blue'>
@@ -21,7 +21,7 @@ const Row = ({ id, firstname, lastname, address }) => {
                     <Button colorScheme='yellow'>
                         <AiFillEdit />
                     </Button>
-                    <Button colorScheme='red' onClick={() => Delete(id)}>
+                    <Button colorScheme='red' onClick={() => DeleteProduct(id)}>
                         <AiFillDelete />
                     </Button>
                 </Box>
@@ -30,4 +30,4 @@ const Row = ({ id, firstname, lastname, address }) => {
     );
 };
 
-export default Row;
+export default RowProduct;
