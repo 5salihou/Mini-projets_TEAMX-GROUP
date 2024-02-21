@@ -16,7 +16,7 @@ export class ProductService {
     return this.ProductModel.create(newProduct);
   }
   getProductById(id: string) {
-    throw this.ProductModel.findOne({ _id: id });
+    return this.ProductModel.findOne({ _id: id });
   }
   deleteProduct(id: string) {
     return this.ProductModel.deleteOne({ _id: id });

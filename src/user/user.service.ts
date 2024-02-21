@@ -15,7 +15,7 @@ export class UserService {
     return this.UserModel.create(newUser);
   }
   getUserById(id: string) {
-    throw this.UserModel.findOne({ _id: id });
+    return this.UserModel.findOne({ _id: id });
   }
   deleteUser(id: string) {
     return this.UserModel.deleteOne({ _id: id });
